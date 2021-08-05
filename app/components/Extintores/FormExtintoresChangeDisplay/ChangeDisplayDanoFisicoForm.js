@@ -13,7 +13,6 @@ export default function ChangeDisplayDanoFisicoForm(props) {
     idEx,
     setShowModal,
     setRealoadExtintorInfo,
-    toastRef,
   } = props;
   const [newDisplayDanoFisico, setNewDisplayDanoFisico] = useState(
     defaultDanoFisicoValue()
@@ -23,8 +22,6 @@ export default function ChangeDisplayDanoFisicoForm(props) {
   const onChangeDanoFisico = (e, type) => {
     setNewDisplayDanoFisico({ ...newDisplayDanoFisico, [type]: e.nativeEvent.text });
   };
-
-  console.log(newDisplayDanoFisico);
 
   const onSubmit = () => {
     if (!newDisplayDanoFisico) {
@@ -43,10 +40,10 @@ export default function ChangeDisplayDanoFisicoForm(props) {
       setIsLoadingDanoFisico(true);
       updateExtintorApi(tokenUpdate, idEx, newDisplayDanoFisico)
         .then((response) => {
+          setRealoadExtintorInfo(true);
           setIsLoadingDanoFisico(false);
           setShowModal(false);
           setNewDisplayDanoFisico(null);
-          setRealoadExtintorInfo(true);
           Toast.show({
             type: "success",
             text1: "Actualización Correcta",

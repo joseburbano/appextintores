@@ -40,6 +40,7 @@ export default function ChangeDisplayTamanoForm(props) {
       };
       updateExtintorApi(tokenUpdate, idEx, update)
         .then((response) => {
+          setRealoadExtintorInfo(true);
           setIsLoadingTamanio(false);
           setShowModal(false);
           setNewDisplayTamanio(null);
@@ -48,7 +49,6 @@ export default function ChangeDisplayTamanoForm(props) {
             text1: "Actualización Correcta",
             text2: `${response.message}`,
           });
-          setRealoadExtintorInfo(true);
         })
         .catch(() => {
           Toast.show({

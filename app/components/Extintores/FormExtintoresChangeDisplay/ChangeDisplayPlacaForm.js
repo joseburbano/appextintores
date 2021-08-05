@@ -33,6 +33,7 @@ export default function ChangeDisplayPlacaForm(props) {
       };
       updateExtintorApi(tokenUpdate, idEx, update)
         .then((response) => {
+          setRealoadExtintorInfo(true);
           setIsLoading(false);
           setShowModal(false);
           setNewDisplayPlaca(null);
@@ -41,7 +42,6 @@ export default function ChangeDisplayPlacaForm(props) {
             text1: "Actualización Correcta",
             text2: `${response.message}`,
           });
-          setRealoadExtintorInfo(true);
         })
         .catch(() => {
           setError("Error al actualizar.");

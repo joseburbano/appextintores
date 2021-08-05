@@ -40,10 +40,10 @@ export default function ChangeDisplayPisoForm(props) {
       };
       updateExtintorApi(tokenUpdate, idEx, update)
         .then((response) => {
+          setRealoadExtintorInfo(true);
           setIsLoadingPiso(false);
           setShowModal(false);
           setNewDisplayPiso(null);
-          setRealoadExtintorInfo(true);
           Toast.show({
             type: "success",
             text1: "Actualización Correcta",

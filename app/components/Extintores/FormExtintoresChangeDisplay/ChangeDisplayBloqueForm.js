@@ -38,12 +38,13 @@ export default function ChangeDisplayBloqueForm(props) {
         ubicacionBloque: newDisplayBloque,
         fechaUpdate: fechaActual,
       };
+      setIsLoadingBloque(true);
       updateExtintorApi(tokenUpdate, idEx, update)
         .then((response) => {
+          setRealoadExtintorInfo(true);
           setIsLoadingBloque(false);
           setShowModal(false);
           setNewDisplayBloque(null);
-          setRealoadExtintorInfo(true);
           Toast.show({
             type: "success",
             text1: "Actualización Correcta",

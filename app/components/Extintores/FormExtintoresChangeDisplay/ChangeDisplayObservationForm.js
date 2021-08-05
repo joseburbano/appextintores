@@ -41,10 +41,10 @@ export default function ChangeDisplayObservationForm(props) {
       setIsLoadingObservation(true);
       updateExtintorApi(tokenUpdate, idEx, newDisplayObservation)
         .then((response) => {
+          setRealoadExtintorInfo(true);
           setIsLoadingObservation(false);
           setShowModal(false);
           setNewDisplayObservation(null);
-          setRealoadExtintorInfo(true);
           Toast.show({
             type: "success",
             text1: "Actualización Correcta",

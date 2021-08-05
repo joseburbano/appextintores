@@ -40,6 +40,7 @@ export default function ChangeDisplaySedeForm(props) {
       };
       updateExtintorApi(tokenUpdate, idEx, update)
         .then((response) => {
+          setRealoadExtintorInfo(true);
           setIsLoadingSede(false);
           setShowModal(false);
           setNewDisplaySede(null);
@@ -48,7 +49,6 @@ export default function ChangeDisplaySedeForm(props) {
             text1: "Actualización Correcta",
             text2: `${response.message}`,
           });
-          setRealoadExtintorInfo(true);
         })
         .catch(() => {
           Toast.show({

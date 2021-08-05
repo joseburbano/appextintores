@@ -14,12 +14,11 @@ export default function ChangeDisplayEstadoPlacaForm(props) {
     idEx,
     setShowModal,
     setRealoadExtintorInfo,
-    toastRef,
   } = props;
   const [newDisplayEstadoPlaca, setNewDisplayEstadoPlaca] = useState(
     defaultEstadoPlacaValue()
   );
-  const [isLoadingEstadoSello, setIsLoadingEstadoSello] = useState(false);
+  const [isLoadingEstadoPlaca, setIsLoadingEstadoPlaca] = useState(false);
 
   const onChange = (value, type) => {
     setNewDisplayEstadoPlaca({ ...newDisplayEstadoPlaca, [type]: value });
@@ -39,13 +38,13 @@ export default function ChangeDisplayEstadoPlacaForm(props) {
         text2: "El estado de la placa del extintor no puede ser igual al actual.",
       });
     } else {
-      setIsLoadingEstadoSello(true);
+      setIsLoadingEstadoPlaca(true);
       updateExtintorApi(tokenUpdate, idEx, newDisplayEstadoPlaca)
         .then((response) => {
-          setIsLoadingEstadoSello(false);
+          setRealoadExtintorInfo(true);
+          setIsLoadingEstadoPlaca(false);
           setShowModal(false);
           setNewDisplayEstadoPlaca(null);
-          setRealoadExtintorInfo(true);
           Toast.show({
             type: "success",
             text1: "Actualización Correcta",
@@ -58,7 +57,7 @@ export default function ChangeDisplayEstadoPlacaForm(props) {
             text1: "Error!",
             text2: "Error al actualizar.",
           });
-          setIsLoadingEstadoSello(false);
+          setIsLoadingEstadoPlaca(false);
         });
     }
   };
@@ -109,7 +108,7 @@ export default function ChangeDisplayEstadoPlacaForm(props) {
         containerStyle={styles.btnContainer}
         buttonStyle={styles.btn}
         onPress={onSubmit}
-        loading={isLoadingEstadoSello}
+        loading={isLoadingEstadoPlaca}
       />
     </View>
   );

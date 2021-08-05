@@ -40,6 +40,7 @@ export default function ChangeDisplayTipoForm(props) {
       };
       updateExtintorApi(tokenUpdate, idEx, update)
         .then((response) => {
+          setRealoadExtintorInfo(true);
           setIsLoadingTipo(false);
           setShowModal(false);
           setNewDisplayTipo(null);
@@ -48,7 +49,6 @@ export default function ChangeDisplayTipoForm(props) {
             text1: "Actualización Correcta",
             text2: `${response.message}`,
           });
-          setRealoadExtintorInfo(true);
         })
         .catch(() => {
           Toast.show({

@@ -42,10 +42,10 @@ export default function ChangeDisplayEstadoSelloForm(props) {
       setIsLoadingEstadoSello(true);
       updateExtintorApi(tokenUpdate, idEx, newDisplayEstadoSello)
         .then((response) => {
+          setRealoadExtintorInfo(true);
           setIsLoadingEstadoSello(false);
           setShowModal(false);
           setNewDisplayEstadoSello(null);
-          setRealoadExtintorInfo(true);
           Toast.show({
             type: "success",
             text1: "Actualización Correcta",
