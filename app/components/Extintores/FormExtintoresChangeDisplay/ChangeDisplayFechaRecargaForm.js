@@ -4,7 +4,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import Toast from "react-native-toast-message";
 import { updateExtintorApi } from "../../../api/extintor";
 
-export default function ChangeDisplayFechaVenciForm(props) {
+export default function ChangeDisplayFechaRecargaForm(props) {
   const {
     displayName,
     tokenUpdate,
@@ -13,13 +13,13 @@ export default function ChangeDisplayFechaVenciForm(props) {
     setRealoadExtintorInfo,
     setShowModal,
   } = props;
-  const [date, setDate] = useState(new Date());
-  const [mode, setMode] = useState('date');
-   const [show, setShow] = useState(false);
+  const [dateRecar, setDateRecar] = useState(new Date());
+  const [modeRecar, setModeRecar] = useState('date');
+   const [showRecar, setShowRecar] = useState(false);
 
-  const onChangeFechaVenci = (e, selectedDate) => {
-    setShow(Platform.OS === 'ios');
-    setDate(selectedDate);
+  const onChangeFechaRecarga = (e, selectedDate) => {
+    setShowRecar(Platform.OS === 'ios');
+    setDateRecar(selectedDate);
     if (!selectedDate) {
       Toast.show({
         type: "error",
@@ -35,7 +35,7 @@ export default function ChangeDisplayFechaVenciForm(props) {
       });
     } else {
       const update = {
-         fechaVencimiento: selectedDate,
+         fechaRecarga: selectedDate,
          fechaUpdate: fechaActual,
       };
       updateExtintorApi(tokenUpdate, idEx, update)
@@ -59,8 +59,8 @@ export default function ChangeDisplayFechaVenciForm(props) {
   };
 
    const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
+    setShowRecar(true);
+    setModeRecar(currentMode);
   };
 
   const showDatepicker = () => {
@@ -73,14 +73,14 @@ export default function ChangeDisplayFechaVenciForm(props) {
        <View>
         <Button onPress={showDatepicker} title="Seleccionar Fecha!" />
       </View>
-    {show && (
+    {showRecar && (
         <DateTimePicker
           testID="dateTimePicker"
-          value={date}
-          mode={mode}
+          value={dateRecar}
+          mode={modeRecar}
           is24Hour={true}
           display="default"
-          onChange={onChangeFechaVenci}
+          onChange={onChangeFechaRecarga}
         />
       )}
     </View>

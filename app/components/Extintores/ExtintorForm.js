@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View} from "react-native";
 import { ListItem, Icon } from "react-native-elements";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { map } from "lodash";
@@ -17,14 +17,13 @@ import ChangeDisplayEstadoGeneralForm from "./FormExtintoresChangeDisplay/Change
 import ChangeDisplayDanoFisicoForm from "./FormExtintoresChangeDisplay/ChangeDisplayDanoFisicoForm";
 import ChangeDisplayObservationForm from "./FormExtintoresChangeDisplay/ChangeDisplayObservationForm";
 import ChangeDisplayFechaVenciForm from "./FormExtintoresChangeDisplay/ChangeDisplayFechaVenciForm";
-//import ChangeDisplayObservationForm from "./FormExtintoresChangeDisplay/ChangeDisplayObservationForm";
+import ChangeDisplayFechaRecargaForm from "./FormExtintoresChangeDisplay/ChangeDisplayFechaRecargaForm";
 
 import Modal from "../Modal";
 
 export default function ExtintorForm(props) {
   const { extintor, toastRef, setRealoadExtintorInfo } = props;
   const [showModal, setShowModal] = useState(false);
-  const [show, setShow] = useState(true);
   const [renderComponent, setRenderComponent] = useState(null);
   const [tokenUpdate, setTokenUpdate] = useState(null);
   const {
@@ -170,14 +169,13 @@ export default function ExtintorForm(props) {
         break;
       case "fechaRecarga":
         setRenderComponent(
-          <ChangeDisplayPlacaForm
-            displayName={fechaRecarga}
-            setShowModal={setShowModal}
-            toastRef={toastRef}
+          <ChangeDisplayFechaRecargaForm
+            displayName={fechaVencimiento}
             idEx={_id}
-            fechaActual={fechaActual}
             tokenUpdate={tokenUpdate}
+            fechaActual={fechaActual}
             setRealoadExtintorInfo={setRealoadExtintorInfo}
+            setShowModal={setShowModal}
           />
         );
         setShowModal(true);
@@ -211,15 +209,17 @@ export default function ExtintorForm(props) {
         setShowModal(true);
         break;
       case "FechaVencimiento":
+        setRenderComponent(
           <ChangeDisplayFechaVenciForm
             displayName={fechaVencimiento}
             idEx={_id}
             tokenUpdate={tokenUpdate}
             fechaActual={fechaActual}
             setRealoadExtintorInfo={setRealoadExtintorInfo}
-            show={show}
-            setShow={setShow}
+            setShowModal={setShowModal}
           />
+           );
+          setShowModal(true);
         break;
       case "EstadEngeneral":
         setRenderComponent(
@@ -233,6 +233,7 @@ export default function ExtintorForm(props) {
             setRealoadExtintorInfo={setRealoadExtintorInfo}
           />
         );
+         setShowModal(true);
         break;
       default:
         setRenderComponent(false);
