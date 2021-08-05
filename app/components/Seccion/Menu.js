@@ -66,13 +66,6 @@ export default function Menu(props) {
       } else {
         return [
           {
-            title: "Extintores User",
-            iconType: "material-community",
-            iconNameLeft: "fire-extinguisher",
-            iconColorLeft: Colores.GREEN,
-            onPress: () => selectedComponent("Extintores"),
-          },
-          {
             title: "Condiciones Inseguras",
             iconType: "material-community",
             iconNameLeft: "hand-right",
