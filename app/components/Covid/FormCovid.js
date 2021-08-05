@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Input, Button } from "react-native-elements";
 import RNPickerSelect from "react-native-picker-select";
 import { getAccessTokenApi } from "../../api/auth";
-import MultiSelect from "multi-select-react-native";
+// import MultiSelect from "multi-select-react-native";
 import * as RootNavigation from "../../navigation/RootNavigation";
 import Toast from "react-native-toast-message";
 import { addAgregarCovidApi } from "../../api/covid";
@@ -216,12 +216,12 @@ export default function FormCovid() {
       <Text style={styles.textopregunt}>
         En los últimos 14 días, usted ha presentado alguno de estos síntomas?
       </Text>
-      <MultiSelect
+      {/* <MultiSelect
         data={data}
         selectedItems={selectedSintomas}
         setSelectedItems={setSelectedSintomas}
         componentStyle={styles.centeredView}
-      />
+      /> */}
       <Text style={styles.textopregunt}>
         En los últimos 14 días, usted o algún miembro de su grupo familiar,
         social o laboral ha tenido contacto con alguien sospechoso de estar

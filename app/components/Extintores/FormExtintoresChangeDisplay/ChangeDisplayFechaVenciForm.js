@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
-import { Button } from "react-native-elements";
-import Colores from "../../../styles/Colors";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, View, Platform } from "react-native";
+import DateTimePicker from '@react-native-community/datetimepicker';
 import Toast from "react-native-toast-message";
 import { updateExtintorApi } from "../../../api/extintor";
 
@@ -11,21 +10,34 @@ export default function ChangeDisplayFechaVenciForm(props) {
     tokenUpdate,
     fechaActual,
     idEx,
-    setShowModal,
     setRealoadExtintorInfo,
-    toastRef,
+    setShow,
+    show,
   } = props;
   const [newDisplayFechaVenci, setNewDisplayFechaVenci] = useState(
     defaultFechaVenciValue()
   );
-  const [isLoadingFechaVenci, setIsLoadingFechaVenci] = useState(false);
+  const [date, setDate] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState('date');
+
+   (async () => {
+    setMode('date');
+     setShow(true);
+    })();
 
   const onChangeFechaVenci = (e, type) => {
     setNewDisplayFechaVenci({
       ...newDisplayFechaVenci,
-      [type]: e.nativeEvent.text,
+      [type]: e,
     });
   };
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+  };
+
 
   const onSubmit = () => {
     if (!newDisplayFechaVenci) {
@@ -46,7 +58,6 @@ export default function ChangeDisplayFechaVenciForm(props) {
       updateExtintorApi(tokenUpdate, idEx, newDisplayFechaVenci)
         .then((response) => {
           setIsLoadingFechaVenci(false);
-          setShowModal(false);
           setNewDisplayFechaVenci(null);
           setRealoadExtintorInfo(true);
           Toast.show({
@@ -68,18 +79,16 @@ export default function ChangeDisplayFechaVenciForm(props) {
 
   return (
     <View style={styles.view}>
-      {/* <DatePicker
-        mode="date"
-        date={displayName}
-        onDateChange={(e) => onChangeFechaVenci(e, "fechaVencimiento")}
-      /> */}
-      <Button
-        title="Actualizar"
-        containerStyle={styles.btnContainer}
-        buttonStyle={styles.btn}
-        onPress={onSubmit}
-        loading={isLoadingObservation}
-      />
+    {show && (
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={date}
+          mode={mode}
+          is24Hour={true}
+          display="default"
+          onChange={onChange}
+        />
+      )}
     </View>
   );
 
@@ -102,15 +111,6 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     marginTop: 20,
-    width: "95%",
-  },
-  btn: {
-    backgroundColor: Colores.GREEN,
-  },
-  textoCaja: {
-    padding: "3%",
-    borderColor: Colores.GREEN,
-    borderWidth: 1,
     width: "95%",
   },
 });

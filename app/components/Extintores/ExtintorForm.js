@@ -24,6 +24,7 @@ import Modal from "../Modal";
 export default function ExtintorForm(props) {
   const { extintor, toastRef, setRealoadExtintorInfo } = props;
   const [showModal, setShowModal] = useState(false);
+  const [show, setShow] = useState(true);
   const [renderComponent, setRenderComponent] = useState(null);
   const [tokenUpdate, setTokenUpdate] = useState(null);
   const {
@@ -209,20 +210,17 @@ export default function ExtintorForm(props) {
         );
         setShowModal(true);
         break;
-      // case "FechaVencimiento":
-      //   setRenderComponent(
-      //     <ChangeDisplayFechaVenciForm
-      //       displayName={fechaVencimiento}
-      //       setShowModal={setShowModal}
-      //       toastRef={toastRef}
-      //       idEx={_id}
-      //       fechaActual={fechaActual}
-      //       tokenUpdate={tokenUpdate}
-      //       setRealoadExtintorInfo={setRealoadExtintorInfo}
-      //     />
-      //   );
-      //   setShowModal(true);
-      //   break;
+      case "FechaVencimiento":
+          <ChangeDisplayFechaVenciForm
+            displayName={fechaVencimiento}
+            idEx={_id}
+            tokenUpdate={tokenUpdate}
+            fechaActual={fechaActual}
+            setRealoadExtintorInfo={setRealoadExtintorInfo}
+            show={show}
+            setShow={setShow}
+          />
+        break;
       case "EstadEngeneral":
         setRenderComponent(
           <ChangeDisplayEstadoGeneralForm
@@ -235,7 +233,6 @@ export default function ExtintorForm(props) {
             setRealoadExtintorInfo={setRealoadExtintorInfo}
           />
         );
-        setShowModal(true);
         break;
       default:
         setRenderComponent(false);

@@ -1,0 +1,8 @@
+{
+    "prettier.insertPragma": true,
+    "prettier.requireConfig": true,
+    "prettier.requirePragma": true,
+    "editor.formatOnPaste": true,
+    "compile-hero.disable-compile-files-on-did-save-code": true,
+    "git.ignoreLimitWarning": true
+}

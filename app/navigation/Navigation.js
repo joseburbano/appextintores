@@ -15,6 +15,7 @@ import Login from "../screens/Login";
 import HomeStack from "./HomeStack";
 import SeccionStack from "./SeccionStack";
 import CuentaStack from "./CuentaStack";
+import {size} from "lodash";
 
 const stac = createStackNavigator();
 // login flow

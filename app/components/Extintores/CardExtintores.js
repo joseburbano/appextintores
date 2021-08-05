@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  ActivityIndicator,
-  TouchableOpacity,
+    View,
+    Text,
+    StyleSheet,
+    FlatList,
+    ActivityIndicator,
+    TouchableOpacity,
 } from "react-native";
 import { Image } from "react-native-elements";
 import { getAvatarExtintorApi } from "../../api/extintor";
@@ -15,12 +15,12 @@ import moment from "moment";
 import Colores from "../../styles/Colors";
 
 export default function CardExtintores(props) {
-  const { extintores, handleLoadMore, isLoading } = props;
-  
-  const navigation = useNavigation();
+    const { extintores, handleLoadMore, isLoading } = props;
 
-  return (
-    <View>
+    const navigation = useNavigation();
+
+    return ( 
+     <View>
       {size(extintores) > 0 ? (
         <FlatList
           data={extintores}
