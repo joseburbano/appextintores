@@ -15,32 +15,32 @@ export default function SeccionStack() {
       <Stack.Screen
         name="Seccion"
         component={Seccion}
-        options={{ title: "Sección" }}
+        options={{ title: "Sección", headerTransparent: true, }}
       />
        <Stack.Screen
         name="Extintores"
         component={Extintores}
-        options={{ title: "Extintores" }}
+        options={{ title: "Extintores", headerTransparent: true, }}
       />
       <Stack.Screen
         name="NormativaParticipacion"
         component={NormativaParticipacion}
-        options={{ title: "Condición Insegura" }}
+        options={{ title: "Condición Insegura", headerTransparent: true, }}
       />
       <Stack.Screen
         name="Covid"
         component={Covid}
-        options={{ title: "Formulario Covid-19" }}
+        options={{ title: "Formulario Covid-19", headerTransparent: true, }}
       />
        <Stack.Screen
         name="Consulta"
         component={Consulta}
-        options={{ title: "Extintores" }}
+        options={{ title: "Extintores", headerTransparent: true, }}
       />
       <Stack.Screen
         name="ExtintorInfo"
         component={ExtintorInfo}
-        options={{ title: "Información del extintor" }}
+        options={{ title: "Información del extintor", headerTransparent: true, }}
       />
 
     </Stack.Navigator>

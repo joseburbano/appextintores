@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { AuthContext } from "../../context/AuthContext";
 import CardExtintores from "../../components/Extintores/CardExtintores";
 import { getSedeBloquePisoApi } from "../../api/extintor";
@@ -95,7 +95,7 @@ export default function PisoUnoA(props) {
   };
 
   return (
-    <View>
+    <View style={styles.espa}>
       {extintores && (
         <CardExtintores
           extintores={extintores}
@@ -106,3 +106,9 @@ export default function PisoUnoA(props) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  espa:{
+    paddingTop: 90,
+  },
+});

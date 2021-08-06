@@ -123,7 +123,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    backgroundColor: Colores.WHITE,
     paddingTop: 10,
     paddingBottom: 10,
   },

@@ -1,21 +1,21 @@
 import React, { useEffect, useState, useMemo } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import { createStackNavigator } from "@react-navigation/stack";
-import { navigationRef } from "./RootNavigation";
-import Toast from 'react-native-toast-message';
 import { AuthContext } from "../context/AuthContext";
 import { Icon } from "react-native-elements";
 import Color from "../styles/Colors";
 import { useClient } from "../hooks/useToken";
-
+import DrawerContent from './DrawerContent';
 import Cargando from "../screens/Cargando";
 import Login from "../screens/Login";
 import HomeStack from "./HomeStack";
 import SeccionStack from "./SeccionStack";
 import CuentaStack from "./CuentaStack";
 import {size} from "lodash";
+
+const Drawer = createDrawerNavigator();
 
 const stac = createStackNavigator();
 // login flow
@@ -42,6 +42,7 @@ const DrawerTab = (props) => {
   return (
     <Tab.Navigator
       tabBarOptions={{
+        headerTransparent: true,
         inactiveTintColor: Color.BLACK,
         activeTintColor: Color.GREEN,
       }}
@@ -52,12 +53,12 @@ const DrawerTab = (props) => {
       <Tab.Screen
         name="Inicio"
         component={HomeStack}
-        options={{ title: "Inicio" }}
+        options={{ title: "Inicio"}}
       />
       <Tab.Screen
         name="Seccion"
         component={SeccionStack}
-        options={{ title: "Sección" }}
+        options={{ title: "Sección"}}
       />
       <Tab.Screen
         name="Perfil"
@@ -109,10 +110,11 @@ const RootStackScreen = () => {
 
 export default function Navigation() {
   return (
-    <NavigationContainer ref={navigationRef}>
-      <RootStackScreen />
-      <Toast ref={(ref) => Toast.setRef(ref)} />
-    </NavigationContainer>
+    <Drawer.Navigator
+      initialRouteName="Inicio"
+      drawerContent={props => <DrawerContent {...props} />}>
+      <Drawer.Screen name="app" component={RootStackScreen} />
+    </Drawer.Navigator>
   );
 }
 

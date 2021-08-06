@@ -14,27 +14,27 @@ export default function HomeStack() {
       <Stack.Screen
         name="Inicio"
         component={Home}
-        options={{ title: "Inicio" }}
+        options={{ title: "Inicio", headerTransparent: true, }}
       />
       <Stack.Screen
         name="OrigenFuego"
         component={OrigenFuego}
-        options={{ title: "Origen del fuego" }}
+        options={{ title: "Origen del fuego", headerTransparent: true, }}
       />
       <Stack.Screen
         name="ClaseFuego"
         component={ClaseFuego}
-        options={{ title: "Clases de fuego" }}
+        options={{ title: "Clases de fuego", headerTransparent: true, }}
       />
       <Stack.Screen
         name="SenalizacionExtintores"
         component={SenalizacionExtintores}
-        options={{ title: "Señalización" }}
+        options={{ title: "Señalización", headerTransparent: true, }}
       />
       <Stack.Screen
         name="PrevencionCovid"
         component={PrevencionCovid}
-        options={{ title: "Prevención Covid-19" }}
+        options={{ title: "Prevención Covid-19", headerTransparent: true, }}
       />
     </Stack.Navigator>
   );

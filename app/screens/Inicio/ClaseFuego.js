@@ -4,7 +4,7 @@ import { View, StyleSheet, Text, Image, ScrollView } from "react-native";
 export default function ClaseFuego() {
   return (
     <ScrollView>
-      <View>
+      <View style={styles.espa}>
         <View style={styles.textoPrie}>
           <Text style={styles.textoPrieme}>Clase A:</Text>
         </View>
@@ -101,6 +101,9 @@ export default function ClaseFuego() {
 }
 
 const styles = StyleSheet.create({
+   espa:{
+    paddingTop: 100,
+  },
   textoPrie: {
     paddingTop: "1%",
     textAlign: "center",

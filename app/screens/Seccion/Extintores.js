@@ -31,7 +31,7 @@ export default function Extintores() {
 
   return (
     <ScrollView>
-      <View>
+      <View style={styles.espa}>
         <View>
           <Text style={styles.titulo}>Seleccione todos los campos</Text>
           <View style={styles.entreItem}>
@@ -199,6 +199,9 @@ function generateOptionsPiso() {
 }
 
 const styles = StyleSheet.create({
+  espa:{
+    paddingTop: 80,
+  },
   titulo: {
     paddingTop: "3%",
     padding: "3%",

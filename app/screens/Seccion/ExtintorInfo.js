@@ -70,7 +70,9 @@ export default function ExtintorInfo(props) {
 
   return (
     <ScrollView vertical style={styles.viewBody}>
+    <View style={styles.espa}>
       <Carousel arrayImages={ftoImage} height={250} width={screenWidth} />
+      </View>
       <View>
         <Extint
           extintor={extintor}
@@ -81,6 +83,9 @@ export default function ExtintorInfo(props) {
   );
 }
 const styles = StyleSheet.create({
+  espa:{
+    paddingTop: 100,
+  },
   viewBody: {
     flex: 1,
     backgroundColor: Colores.WHITE,

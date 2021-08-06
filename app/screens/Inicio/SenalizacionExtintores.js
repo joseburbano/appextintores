@@ -4,7 +4,7 @@ import { View, StyleSheet, Text, Image, ScrollView } from "react-native";
 export default function SenalizacionExtintores() {
   return (
     <ScrollView>
-      <View>
+      <View style={styles.espa}>
         <View style={styles.tiny}>
           <Image
             style={styles.tinyLogo}
@@ -28,6 +28,9 @@ export default function SenalizacionExtintores() {
 }
 
 const styles = StyleSheet.create({
+  espa:{
+    paddingTop: 100,
+  },
   textoPrie: {
     paddingTop: "6%",
     textAlign: "center",

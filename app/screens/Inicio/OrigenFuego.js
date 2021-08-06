@@ -4,7 +4,7 @@ import { View, StyleSheet, Text, Image, ScrollView } from "react-native";
 export default function OrigenFuego() {
   return (
     <ScrollView>
-      <View>
+      <View style={styles.espa}>
         <View style={styles.textoPrie}>
           <Text style={styles.textoPriem}>
             El tetraedro del fuego representa a los 4 elementos necesarios para
@@ -32,6 +32,9 @@ export default function OrigenFuego() {
 }
 
 const styles = StyleSheet.create({
+   espa:{
+    paddingTop: 100,
+  },
   textoPrie: {
     paddingTop: "1%",
     textAlign: "center",

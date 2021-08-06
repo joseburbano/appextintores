@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
   menuItem: {
     borderBottomWidth: 1,
     borderBottomColor: Colores.GREEN,
+    backgroundColor: Colores.GRAY2,
   },
   textTitel: {
     padding: "1%",

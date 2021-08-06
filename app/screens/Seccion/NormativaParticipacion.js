@@ -19,7 +19,7 @@ export default function NormativaParticipacion() {
 
   return (
     <KeyboardAwareScrollView>
-      <View>
+      <View style={styles.espa}>
         <Text style={styles.titulo}>Registrar una condición insegura</Text>
         {userId && (
           <CondicionInseguraForm
@@ -35,6 +35,9 @@ export default function NormativaParticipacion() {
 }
 
 const styles = StyleSheet.create({
+  espa:{
+    paddingTop: 100,
+  },
   titulo: {
     paddingTop: "3%",
     padding: "6%",

@@ -4,7 +4,7 @@ import { View, StyleSheet, Text, Image, ScrollView } from "react-native";
 export default function PrevencionCovid() {
   return (
     <ScrollView>
-      <View>
+      <View style={styles.espa}>
         <View style={styles.textoPrie}>
           <Text style={styles.textoPriem}>
             Los síntomas más habituales de la COVID-19 son la fiebre, la tos
@@ -72,6 +72,9 @@ export default function PrevencionCovid() {
 }
 
 const styles = StyleSheet.create({
+  espa:{
+    paddingTop: 100,
+  },
   textoPrie: {
     paddingTop: "1%",
     textAlign: "center",

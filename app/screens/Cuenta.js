@@ -74,16 +74,16 @@ export default function Cuenta() {
 const styles = StyleSheet.create({
   viewUserInfo: {
     minHeight: "100%",
-    backgroundColor: Colores.GRAY,
+    paddingTop: 80,
   },
   btnCloseSession: {
     marginTop: 30,
     borderRadius: 0,
     backgroundColor: Colores.WHITE,
     borderTopWidth: 1,
-    borderTopColor: Colores.GRAY,
+    borderTopColor: Colores.GREEN,
     borderBottomWidth: 1,
-    borderBottomColor: Colores.GRAY,
+    borderBottomColor: Colores.GREEN,
     paddingTop: 10,
     paddingBottom: 10,
   },

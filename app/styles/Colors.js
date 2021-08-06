@@ -17,4 +17,5 @@ export default {
   YELLOW1: "#FBC02D",
   YELLOW2: "#FFEB3B",
   GREEN: "#00A651",
+  DARK: '#192734'
 };

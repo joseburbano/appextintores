@@ -1,12 +1,11 @@
 import React from "react";
-import { View, Text, StatusBar, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import Categoria from "../components/Categoria/Categoria";
 import Colores from "../styles/Colors";
 
 export default function Home() {
   return (
-    <View>
-      <StatusBar backgroundColor={Colores.GREEN} translucent={true} />
+    <View style={styles.ini}>
       <Text style={styles.titulo}>INFORMACIÓN</Text>
       <View style={styles.contatiners}>
         <Text style={styles.textCate}>Categorias</Text>
@@ -17,6 +16,9 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
+  ini:{
+    paddingTop: 10,
+  },
   titulo: {
     paddingTop: "23%",
     padding: "6%",

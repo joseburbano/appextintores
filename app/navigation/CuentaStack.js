@@ -10,7 +10,7 @@ export default function CuentaStack() {
       <Stack.Screen
         name="Cuenta"
         component={Cuenta}
-        options={{ title: "Perfil" }}
+        options={{ title: "Perfil", headerTransparent: true, }}
       />
     </Stack.Navigator>
   );
