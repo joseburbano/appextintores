@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Platform, TextInput } from "react-native";
+import { StyleSheet, View, Text, TextInput } from "react-native";
 import { Avatar, Accessory, Input, Button } from "react-native-elements";
-import RNPickerSelect from "react-native-picker-select";
+import Selector from "@wiicamp/react-native-selector";
 import { getAccessTokenApi } from "../../api/auth";
 import * as RootNavigation from "../../navigation/RootNavigation";
 import { uploadImagenApi, addParticipacionApi } from "../../api/participacion";
@@ -155,108 +155,148 @@ export default function CondicionInseguraForm(props) {
           <Accessory />
         </Avatar>
       </View>
-      <View style={styles.formContainer}>
+      <View>
         <Text style={styles.textopregunt}>Tipo de evento</Text>
-        <RNPickerSelect
-          placeholder={placeholderTipoEvento}
-          onValueChange={(value) =>
-            setParticipacionData({
-              ...participacionData,
-              claseRiesgoLocativo: value,
-            })
-          }
-          items={[
-            { label: "Incidente", value: "Incidente" },
-            { label: "Emergencia", value: "Emergencia" },
-            { label: "Comportamental", value: "Comportamental" },
-            { label: "Medio Ambiente", value: "Medio Ambiente" },
-          ]}
-          style={
-            Platform.OS === "ios"
-              ? styles.selectPuntIOS
-              : styles.selectPuntAndroid
-          }
-          useNativeAndroidPickerStyle={true}
-        />
+        <View style={styles.entreItem}>
+         <Selector
+              theme="dropdown" // Default: 'simple'
+              items={[
+                      { myLabel: "Incidente", myValue: "Incidente" },
+                      { myLabel: "Emergencia", myValue: "Emergencia" },
+                      { myLabel: "Comportamental", myValue: "Comportamental" },
+                      { myLabel: "Medio Ambiente", myValue: "Medio Ambiente" },
+                    ]}
+              // Specify key
+              valueKey="myValue" // Default: 'value'
+              labelKey="myLabel" // Default: 'label'
+              defaultValue="english" // Set default value
+              placeholder="Tipo de evento" // Placeholder for dropdown UI
+              loading={false} // Set loading for selector
+              disabled={false} // Set disable for selector
+              // Styles
+              textOptionStyle={{ color: Colores.GREEN }}
+              placeholderContainerStyle={{ paddingVertical: 20 }}
+              placeholderStyle={{ color: Colores.RED }}
+              iconStyle={{ tintColor: Colores.GREEN }}
+              loadingStyle={{ marginBottom: 10 }}
+              // On value change
+              onChange={(value) =>
+                  setParticipacionData({
+                  ...participacionData,
+                  claseRiesgoLocativo: value,
+                })
+              }
+            />
+            </View>
         <Text style={styles.textopregunt}>Clasificacion de falla</Text>
-        <RNPickerSelect
-          placeholder={placeholderClasificacionFalla}
-          onValueChange={(value) =>
-            setParticipacionData({
-              ...participacionData,
-              condicionInsegura: value,
-            })
-          }
-          items={[
-            { label: "Salud Enfermedad", value: "Salud Enfermedad" },
-            { label: "Lesiones, accidentes laborales", value: "No" },
-            { label: "Productos, procesos", value: "Productos, procesos" },
-            { label: "Activos", value: "Activos" },
-            {
-              label: "Equipos y Herramientas",
-              value: "Equipos y Herramientas",
-            },
-            { label: "Bienes a terceros", value: "Bienes a terceros" },
-            { label: "Vehiculos", value: "Vehiculos" },
-            { label: "Contaminacion", value: "Contaminacion" },
-            { label: "Comunidad", value: "Comunidad" },
-            { label: "Tiempo", value: "Tiempo" },
-            {
-              label: "Informacion, documentación",
-              value: "Informacion, documentación",
-            },
-            {
-              label: "Imagen de la institucion",
-              value: "Imagen de la institucion",
-            },
-          ]}
-          style={
-            Platform.OS === "ios"
-              ? styles.selectPuntIOS
-              : styles.selectPuntAndroid
-          }
-          useNativeAndroidPickerStyle={true}
-        />
+        <View style={styles.entreItem}>
+         <Selector
+              theme="dropdown" // Default: 'simple'
+              items={[
+                      { myLabel: "Salud Enfermedad", myValue: "Salud Enfermedad" },
+                      { myLabel: "Lesiones, accidentes laborales", myValue: "No" },
+                      { myLabel: "Productos, procesos", myValue: "Productos, procesos" },
+                      { myLabel: "Activos", myValue: "Activos" },
+                      {
+                        myLabel: "Equipos y Herramientas",
+                        myValue: "Equipos y Herramientas",
+                      },
+                      { myLabel: "Bienes a terceros", myValue: "Bienes a terceros" },
+                      { myLabel: "Vehiculos", myValue: "Vehiculos" },
+                      { myLabel: "Contaminacion", myValue: "Contaminacion" },
+                      { myLabel: "Comunidad", myValue: "Comunidad" },
+                      { myLabel: "Tiempo", myValue: "Tiempo" },
+                      {
+                        myLabel: "Informacion, documentación",
+                        myValue: "Informacion, documentación",
+                      },
+                      {
+                        myLabel: "Imagen de la institucion",
+                        myValue: "Imagen de la institucion",
+                      },
+                    ]}
+              // Specify key
+              valueKey="myValue" // Default: 'value'
+              labelKey="myLabel" // Default: 'label'
+              defaultValue="english" // Set default value
+              placeholder="Clasificacion de falla" // Placeholder for dropdown UI
+              loading={false} // Set loading for selector
+              disabled={false} // Set disable for selector
+              // Styles
+              textOptionStyle={{ color: Colores.GREEN }}
+              placeholderContainerStyle={{ paddingVertical: 20 }}
+              placeholderStyle={{ color: Colores.RED }}
+              iconStyle={{ tintColor: Colores.GREEN }}
+              loadingStyle={{ marginBottom: 10 }}
+              // On value change
+              onChange={(value) =>
+                      setParticipacionData({
+                  ...participacionData,
+                  condicionInsegura: value,
+                })
+              }
+            />
+            </View>
         <Text style={styles.textopregunt}>Requiere Primeros Auxilios</Text>
-        <RNPickerSelect
-          placeholder={placeholderPrimerosAuxilios}
-          onValueChange={(value) =>
-            setParticipacionData({
-              ...participacionData,
-              primerosAuxilios: value,
-            })
-          }
-          items={[
-            { label: "Si", value: "Si" },
-            { label: "No", value: "No" },
-          ]}
-          style={
-            Platform.OS === "ios"
-              ? styles.selectPuntIOS
-              : styles.selectPuntAndroid
-          }
-          useNativeAndroidPickerStyle={true}
-        />
+        <View style={styles.entreItem}>
+         <Selector
+              theme="dropdown" // Default: 'simple'
+              items={[
+                      { myLabel: "Si", myValue: "Si" },
+                      { myLabel: "No", myValue: "No" },
+                    ]}
+              // Specify key
+              valueKey="myValue" // Default: 'value'
+              labelKey="myLabel" // Default: 'label'
+              defaultValue="english" // Set default value
+              placeholder="Requiere Primeros Auxilios" // Placeholder for dropdown UI
+              loading={false} // Set loading for selector
+              disabled={false} // Set disable for selector
+              // Styles
+              textOptionStyle={{ color: Colores.GREEN }}
+              placeholderContainerStyle={{ paddingVertical: 20 }}
+              placeholderStyle={{ color: Colores.RED }}
+              iconStyle={{ tintColor: Colores.GREEN }}
+              loadingStyle={{ marginBottom: 10 }}
+              // On value change
+              onChange={(value) =>
+                      setParticipacionData({
+                  ...participacionData,
+                  primerosAuxilios: value,
+                })
+              }
+            />
+            </View>
         <Text style={styles.textopregunt}>Tiene Relacion con el trabajo</Text>
-        <RNPickerSelect
-          placeholder={placeholderRelacionTrabajo}
-          onValueChange={(value) =>
-            setParticipacionData({
-              ...participacionData,
-              relacionTrabajo: value,
-            })
-          }
-          items={[
-            { label: "Si", value: "Si" },
-            { label: "No", value: "No" },
-          ]}
-          style={
-            Platform.OS === "ios"
-              ? styles.selectPuntIOS
-              : styles.selectPuntAndroid
-          }
-          useNativeAndroidPickerStyle={true}
-        />
+         <View style={styles.entreItem}>
+         <Selector
+              theme="dropdown" // Default: 'simple'
+              items={[
+                      { myLabel: "Si", myValue: "Si" },
+                      { myLabel: "No", myValue: "No" },
+                    ]}
+              // Specify key
+              valueKey="myValue" // Default: 'value'
+              labelKey="myLabel" // Default: 'label'
+              defaultValue="english" // Set default value
+              placeholder="Tiene Relacion con el trabajo" // Placeholder for dropdown UI
+              loading={false} // Set loading for selector
+              disabled={false} // Set disable for selector
+              // Styles
+              textOptionStyle={{ color: Colores.GREEN }}
+              placeholderContainerStyle={{ paddingVertical: 20 }}
+              placeholderStyle={{ color: Colores.RED }}
+              iconStyle={{ tintColor: Colores.GREEN }}
+              loadingStyle={{ marginBottom: 10 }}
+              // On value change
+              onChange={(value) =>
+                      setParticipacionData({
+                  ...participacionData,
+                  relacionTrabajo: value,
+                })
+              }
+            />
+            
         <Text style={styles.textopregunt}>
           Lugar donde se presente la novedad
         </Text>
@@ -295,6 +335,7 @@ export default function CondicionInseguraForm(props) {
           buttonStyle={styles.btnLogin}
           onPress={onSubmitParticipacion}
         />
+      </View>
       </View>
     </View>
   );
@@ -415,5 +456,8 @@ const styles = StyleSheet.create({
   textCate: {
     fontSize: 26,
     color: Colores.WHITE,
+  },
+  entreItem: {
+    padding: "3%",
   },
 });

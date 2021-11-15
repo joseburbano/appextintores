@@ -12,7 +12,7 @@ export default function NormativaParticipacion() {
 
   useEffect(() => {
       (async () => {
-        const idUser = await AsyncStorage.getItem("id");
+        const idUser = await AsyncStorage.getItem("@id");
         setUserId(idUser);
       })();
   }, []);

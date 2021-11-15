@@ -79,13 +79,13 @@ const RootStackScreen = () => {
   const authContext = useMemo(
     () => ({
       signIn: async () => {
-        const value = await AsyncStorage.getItem("accessToken");
+        const value = await AsyncStorage.getItem("@accessToken");
         setHasToken(value);
       },
       signOut: async () => {
-        await AsyncStorage.removeItem("accessToken");
-        await AsyncStorage.removeItem("refreshToken");
-        await AsyncStorage.removeItem("id");
+        await AsyncStorage.removeItem("@accessToken");
+        await AsyncStorage.removeItem("@refreshToken");
+        await AsyncStorage.removeItem("@id");
         setHasToken(null);
       },
     }),

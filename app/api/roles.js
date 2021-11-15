@@ -3,7 +3,7 @@ import { basePath, version } from "./config";
 //peticion para agregar Roles al backend
 export function addRolApi(token, rol) {
  
-  const url = `${basePath}/${version}/add-roles`;
+  const url = `${basePath}/${version}/role/add-rol`;
   const params = {
     method: "POST",
     headers: {
@@ -49,7 +49,7 @@ export function updateRolApi(token, data) {
 }
 
 export function getRolApi(token) {
-  const url = `${basePath}/${version}/get-roles-permi`;
+  const url = `${basePath}/${version}/role/get-roles-permi`;
   const params = {
     method: "GET",
     headers: {
@@ -71,7 +71,7 @@ export function getRolApi(token) {
 }
 
 export function deleteRolApi(token, id) {
-  const url = `${basePath}/${version}/delete-roles/${id}`;
+  const url = `${basePath}/${version}/role/delete-rol/${id}`;
 
   const params = {
     method: "DELETE",

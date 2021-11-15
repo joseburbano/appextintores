@@ -7,7 +7,7 @@ export const getAccessTokenApi = () => {
   const [estad, setEstad] = useState(null);
   const getAccess = async () => {
     try {
-      const accessToken = await AsyncStorage.getItem("accessToken");
+      const accessToken = await AsyncStorage.getItem("@accessToken");
       setEstad(accessToken);
       if (!accessToken || accessToken === "null") {
         setEstad(null);
@@ -35,7 +35,7 @@ export const DatosUsuarioToken = () => {
   const [estadd, setEstadd] = useState(null);
   const getAccesst = async () => {
     try {
-      const accessToken = await AsyncStorage.getItem("refreshToken");
+      const accessToken = await AsyncStorage.getItem("@refreshToken");
       console.log(accessToken);
       const metaToken = jwtDecode(accessToken);
       
@@ -57,7 +57,7 @@ export const getRefreshTokenApi = async () => {
   const [estad, setEstad] = useState(null);
   const getRefreshAccess = async () => {
     try {
-      const refreshToken = await AsyncStorage.getItem("refreshToken");
+      const refreshToken = await AsyncStorage.getItem("@refreshToken");
       if (!refreshToken || refreshToken === "null") {
         setEstad(null);
       } else {
@@ -106,8 +106,8 @@ export function refreshAccessTokenApi(refreshToken) {
         (async () => {
           const { accessToken, refreshToken } = result;
           try {
-            await AsyncStorage.setItem("accessToken", accessToken);
-            await AsyncStorage.setItem("refreshToken", refreshToken);
+            await AsyncStorage.setItem("@accessToken", accessToken);
+            await AsyncStorage.setItem("@refreshToken", refreshToken);
           } catch {
             console.log("Error refreshAccessTokenApi");
           }

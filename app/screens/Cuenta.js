@@ -18,11 +18,12 @@ export default function Cuenta() {
 
   useEffect(() => {
     (async () => {
-      const idUser = await AsyncStorage.getItem("id");
+      const idUser = await AsyncStorage.getItem("@id");
       await dataUserApi(idUser)
         .then((response) => {
           if (response.code === 200) {
-            setUserInfo(response.user);
+            console.log(response);
+            setUserInfo(response.users);
           } else {
             if (response.message === "Sesión Invalida") {
               Toast.show({

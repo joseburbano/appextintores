@@ -33,9 +33,9 @@ export default function PisoUnoA(props) {
         await getSedeBloquePisoApi(token, limit, 1, sede, bloque, piso)
           .then((response) => {
             if (response.code === 200) {
-              setExtintores(response.pisos.docs);
-              setTotalExtintores(response.pisos.total);
-              setStartExtintores(response.pisos.pages);
+              setExtintores(response.extintores);
+              setTotalExtintores(response.total.totalPage);
+              setStartExtintores(response.total.pageSize);
             } else {
               if (response.message === "Sesión Invalida") {
                 Toast.show({
@@ -66,9 +66,9 @@ export default function PisoUnoA(props) {
     await getSedeBloquePisoApi(token, limit, 2, sede, bloque, piso+1)
       .then((response) => {
         if (response.code === 200) {
-          const rf = response.pisos.docs;
-          setTotalExtintores(response.pisos.total);
-          setStartExtintores(response.pisos.pages);
+          const rf = response.extintores;
+          setTotalExtintores(response.total.totalPage);
+          setStartExtintores(response.total.pageSize);
           setExtintores([...extintores, ...rf]);
           setIsLoading(false);
         } else {

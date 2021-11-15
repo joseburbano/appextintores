@@ -48,7 +48,7 @@ export default function ExtintorForm(props) {
 
   useEffect(() => {
     (async () => {
-      const idToken = await AsyncStorage.getItem("accessToken");
+      const idToken = await AsyncStorage.getItem("@accessToken");
       setTokenUpdate(idToken);
     })();
   }, []);

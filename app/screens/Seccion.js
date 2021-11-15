@@ -8,7 +8,7 @@ export default function Seccion() {
 
   useEffect(() => {
     (async () => {
-      const rolUser = await AsyncStorage.getItem("rol");
+      const rolUser = await AsyncStorage.getItem("@rol");
       setDatoRol(rolUser);
     })();
   }, []);

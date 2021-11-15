@@ -6,7 +6,7 @@ export const useClient = () => {
 
   const getClient = async () => {
     try {
-      const id = await AsyncStorage.getItem("accessToken");
+      const id = await AsyncStorage.getItem("@accessToken");
       setIdUser(id);
     } catch (error) {
       console.log(error, "other err");

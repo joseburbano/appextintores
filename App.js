@@ -21,8 +21,8 @@ export default function App() {
 
   //modificamos colores paper
   DefaultThemePaper.colors.primary = Colores.WHITE;
-  DarkThemePaper.colors.primary = Colores.BLUE2
-  DarkThemePaper.colors.accent = Colores.BLUE2;
+  DarkThemePaper.colors.primary = Colores.WHITE
+  DarkThemePaper.colors.accent = Colores.WHITE;
 
   //modificamos colores de navigation
   DarkThemeNavigation.colors.background = Colores.DARK;
@@ -51,9 +51,9 @@ export default function App() {
          <NavigationContainer ref={navigationRef} theme={
             theme === 'dark' ? DarkThemeNavigation : DefaultThemeNavigation
           }>
-      <Navigation />
-      <Toast ref={(ref) => Toast.setRef(ref)} />
-    </NavigationContainer>
+          <Navigation />
+          <Toast ref={(ref) => Toast.setRef(ref)} />
+        </NavigationContainer>
         
       </PaperProvider>
     </PreferencesContext.Provider>

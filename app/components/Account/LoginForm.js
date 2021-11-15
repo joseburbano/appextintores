@@ -40,15 +40,19 @@ export default function LoginForm() {
           text2: `${result.message}`,
         });
       } else {
-        try {
+        try { 
           const accessToken = result.accessToken;
           const refreshToken = result.refreshToken;
           const user = result.user;
           const rol = result.rol;
-          const value = await AsyncStorage.setItem("accessToken", accessToken);
-          await AsyncStorage.setItem("refreshToken", refreshToken);
-          await AsyncStorage.setItem("id", user);
-          await AsyncStorage.setItem("rol", rol);
+
+          const value = await AsyncStorage.setItem("@accessToken", accessToken);
+          await AsyncStorage.setItem("@refreshToken", refreshToken);
+          await AsyncStorage.setItem("@id", user);
+          await AsyncStorage.setItem("@rol", rol);
+
+ 
+
           if (value == null) {
             Toast.show({
               type: "success",
@@ -63,7 +67,7 @@ export default function LoginForm() {
             });
           }
           signIn();
-        } catch {
+        } catch (e){
           Toast.show({
             type: "error",
             text1: "Algo salio mal!",
