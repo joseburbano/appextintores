@@ -1,6 +1,5 @@
-import React, { useState} from "react";
-import { View, Text, StatusBar, StyleSheet } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import React, { useState } from "react";
+import { View, Text, StatusBar, StyleSheet, KeyboardAvoidingView, SafeAreaView, ScrollView } from "react-native";
 import { CheckBox } from "react-native-elements";
 import FormCovid from "../../components/Covid/FormCovid";
 import Colores from "../../styles/Colors";
@@ -9,7 +8,7 @@ export default function Covid() {
   const [autorizo, setAutorizo] = useState(false);
   const [acepto, setAcepto] = useState(false);
   return (
-    <KeyboardAwareScrollView>
+    <ScrollView>
       <View style={styles.espa}>
         <StatusBar backgroundColor={Colores.GREEN} translucent={true} />
         <Text style={styles.titulo}>FORMULARIO DE CONTROL DE COVID-19</Text>
@@ -82,12 +81,14 @@ export default function Covid() {
           />
         )}
         {autorizo && (
+          <KeyboardAvoidingView>
           <View style={styles.contatiners}>
             {acepto && <FormCovid />}
           </View>
+          </KeyboardAvoidingView>
         )}
       </View>
-    </KeyboardAwareScrollView>
+    </ScrollView>
   );
 }
 

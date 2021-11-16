@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, KeyboardAvoidingView, ScrollView } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import LoadingApi from "../../components/LoadingApi";
 import CondicionInseguraForm from "../../components/CondicionInsegura/CondicionInseguraForm";
 
@@ -18,19 +17,21 @@ export default function NormativaParticipacion() {
   }, []);
 
   return (
-    <KeyboardAwareScrollView>
-      <View style={styles.espa}>
-        <Text style={styles.titulo}>Registrar una condición insegura</Text>
-        {userId && (
-          <CondicionInseguraForm
-            userId={userId}
-            setLoading={setLoading}
-            setLoadingText={setLoadingText}
-          />
-        )}
-        <LoadingApi text={loadingText} isVisible={loading} />
-      </View>
-    </KeyboardAwareScrollView>
+    <ScrollView>
+      <KeyboardAvoidingView>
+        <View style={styles.espa}>
+          <Text style={styles.titulo}>Registrar una condición insegura</Text>
+          {userId && (
+            <CondicionInseguraForm
+              userId={userId}
+              setLoading={setLoading}
+              setLoadingText={setLoadingText}
+            />
+          )}
+          <LoadingApi text={loadingText} isVisible={loading} />
+        </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 }
 

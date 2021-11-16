@@ -4,8 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Input, Button } from "react-native-elements";
 import Selector from "@wiicamp/react-native-selector";
 import { getAccessTokenApi } from "../../api/auth";
-// import MultiSelect from "multi-select-react-native";
-import MultiSelect from 'react-native-multiple-select';
+import MultiSelect from "react-native-multiple-select";
 import * as RootNavigation from "../../navigation/RootNavigation";
 import Toast from "react-native-toast-message";
 import { addAgregarCovidApi } from "../../api/covid";
@@ -25,23 +24,23 @@ export default function FormCovid() {
   
   const onSelectedItemsChange = e => {
     setSelectedSintomas( e );
+     setCovidData({ ...covidData, sintomas: selectedSintomas });
   };
 
-
+console.log(selectedSintomas);
 
   const onChangeForm = (e, type) => {
     setCovidData({ ...covidData, [type]: e.nativeEvent.text });
   };
 
   const onSubmit = async () => {
-    setCovidData({ ...covidData, sintomas: selectedSintomas });
     if (
       isEmpty(covidData.sede) ||
       isEmpty(covidData.diagnosticoCovid) ||
       isEmpty(covidData.diasCovid) ||
       isEmpty(covidData.sospecha) ||
-      isEmpty(covidData.fiebreDias) ||
       isEmpty(covidData.sintomas) ||
+      isEmpty(covidData.fiebreDias) ||
       isEmpty(covidData.respiratoriosDias) ||
       isEmpty(covidData.sospechosoContagiado) ||
       isEmpty(covidData.sospechosoFamiliar) ||
@@ -80,7 +79,7 @@ export default function FormCovid() {
   const data = [
     {
       id: "Molestias y dolores",
-      title: "Molestias y dolores",
+      name: "Molestias y dolores",
     },
     {
       id: "Dolor de garganta",
